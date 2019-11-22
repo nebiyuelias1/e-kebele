@@ -7,3 +7,11 @@ E-Kebele is a system that automates the tasks that are done in the administrativ
   - [Apache](https://httpd.apache.org/)
   - [PHP](https://www.php.net/) version 5.6 or newer is recommended
   - [MySQL](https://www.mysql.com/) (5.1+)
+  - [Git](https://git-scm.com/)
+
+## Steps to run this project
+1. Clone this repository into your web servers root serving directory by using the Git **clone** command:
+- git clone https://github.com/nebiyuelias1/e-kebele.git
+2. Make sure Apache, PHP and MySQL are up and running.
+3. Open your web browser and locate to http://localhost/e-kebele/
+
