@@ -15,3 +15,6 @@ E-Kebele is a system that automates the tasks that are done in the administrativ
 2. Make sure Apache, PHP and MySQL are up and running.
 3. Open your web browser and locate to http://localhost/e-kebele/
 
+## Workflow
+1. Whenever you are working on a task, it's better to create a separate branch.
+
