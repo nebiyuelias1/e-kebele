@@ -17,4 +17,5 @@ E-Kebele is a system that automates the tasks that are done in the administrativ
 
 ## Workflow
 1. Whenever you are working on a task, it's better to create a separate branch.
+2.
 
