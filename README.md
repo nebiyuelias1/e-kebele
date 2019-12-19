@@ -12,10 +12,17 @@ E-Kebele is a system that automates the tasks that are done in the administrativ
 
 ## Steps to run this project
 1. Clone this repository into your web servers root serving directory by using the Git **clone** command:
-- git clone https://github.com/nebiyuelias1/e-kebele.git
-2. Make sure Apache, PHP and MySQL are up and running.
-3. Open your web browser and locate to: http://localhost/e-kebele/
-4. Whenever you want to see the Code Igniter Guide go to: http://localhost/e-kebele/user_guide/
+```git clone https://github.com/nebiyuelias1/e-kebele.git```
+2. Go to the directory you just cloned using:
+```cd e-kebele```
+3. Install required dependencies using composer:
+```composer install```
+4. Create a ```.env``` file in your project's root directory (same level as ```.env.example```).
+5. Make sure Apache, PHP and MySQL are up and running.
+6. Create a database user with a password. Then create a database for the application.
+7. Copy everything from ```.env.example``` to ```.env``` and fill in the details.
+8. Open your web browser and locate to: http://localhost/e-kebele/
+9. Whenever you want to see the Code Igniter Guide go to: http://localhost/e-kebele/user_guide/
 
 ## Development Workflow
 1. Whenever you are working on a task, it's better to create a separate branch of the master branch. While you are on the master branch you can use the following git command to create a new branch: 
