@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/style.css">
 </head>
 
-<body>
+<body class="grey lighten-3">
 
     <?php echo $body; ?>
 
