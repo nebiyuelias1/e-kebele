@@ -1,5 +1,5 @@
 # e-kebele
-E-Kebele is a system that automates the tasks that are done in the administrative kebeles.
+E-Kebele is a system that automates the tasks that are done in the kebeles.
 
 ## Requirements
 * You can use [XAMP](https://www.apachefriends.org/index.html), [WAMP](http://www.wampserver.com/en/), [LAMP](https://bitnami.com/stack/lamp/installer) that contains everything needed for working on this project.
