@@ -84,8 +84,8 @@
     <!-- Sidebar -->
     <div class="sidebar-fixed position-fixed">
 
-        <a class="logo-wrapper waves-effect" style="display: block; text-align: center;">
-            <h4 class="blue-text mb-0" style="font-weight: bold;">e-Kebele</h4>
+        <a class="logo-wrapper waves-effect">
+            <h4 class="blue-text">e-Kebele</h4>
         </a>
 
         <div class="list-group list-group-flush">

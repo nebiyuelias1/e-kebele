@@ -13,9 +13,14 @@
     -webkit-border-radius: 5px;
     border-radius: 5px; }
   .sidebar-fixed .logo-wrapper {
-    padding: 2.5rem; }
+    padding: 2.5rem;
+    display: block;
+    text-align: center; }
     .sidebar-fixed .logo-wrapper img {
       max-height: 50px; }
+    .sidebar-fixed .logo-wrapper h4 {
+      font-weight: bold;
+      margin-bottom: 0; }
 
 @media (min-width: 1200px) {
   .navbar,
