@@ -13,10 +13,10 @@ jobs:
         run: |
           ISSUE_TITLE="${{ github.event.issue.title }}"
           if [[ "$ISSUE_TITLE" =~ \[KAN-[0-9]+\] ]]; then
-            echo "::set-output name=kanban_issue::true"
+            echo "kanban_issue=true" >> "$GITHUB_OUTPUT"
             echo "Issue title matches the pattern!"
           else
-            echo "::set-output name=kanban_issue::false"
+            echo "kanban_issue=false" >> "$GITHUB_OUTPUT"
             echo "Issue title does not match the pattern."
           fi
 
