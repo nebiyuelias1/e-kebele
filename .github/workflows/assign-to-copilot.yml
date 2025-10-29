@@ -28,7 +28,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           echo "Assigning GitHub Copilot to the issue..."
-          gh issue edit "${{ github.event.issue.number }}" --add-assignee github-copilot
+          gh issue edit "${{ github.event.issue.number }}" --add-assignee @copilot
           echo "GitHub Copilot assigned successfully."
           # Add your desired actions here.  For example:
           # - echo "Assigning to project..."
