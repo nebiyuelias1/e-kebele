@@ -85,7 +85,7 @@
     <div class="sidebar-fixed position-fixed">
 
         <a class="logo-wrapper waves-effect">
-            <img src="https://mdbootstrap.com/img/logo/mdb-email.png" class="img-fluid" alt="">
+            <img src="<?php echo base_url(); ?>assets/img/sample.jpg" class="img-fluid" alt="e-Kebele Logo">
         </a>
 
         <div class="list-group list-group-flush">
