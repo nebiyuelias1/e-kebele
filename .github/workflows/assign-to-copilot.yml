@@ -23,7 +23,9 @@ jobs:
       - name: Run Actions (if KAN issue)
         if: steps.check_title.outputs.kanban_issue == 'true'
         run: |
-          echo "This action will only run for issues with [KAN-xx] in the title."
+          echo "Assigning GitHub Copilot to the issue..."
+          gh issue edit "${{ github.event.issue.number }}" --add-assignee github-copilot
+          echo "GitHub Copilot assigned successfully."
           # Add your desired actions here.  For example:
           # - echo "Assigning to project..."
           # - gh project item-add --project "Your Project URL" --issue-number ${{ github.event.issue.number }}
