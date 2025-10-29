@@ -1,0 +1,1 @@
+- If the issue contains keyword for a jira key like [KAN-98], make sure to use a branch name or a commit using that key without lowercase to make sure it's linked to the original Jira issue.
