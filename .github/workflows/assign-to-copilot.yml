@@ -1,0 +1,31 @@
+name: Assign issue to copilot
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  check_issue_title:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check Issue Title
+        id: check_title
+        run: |
+          ISSUE_TITLE="${{ github.event.issue.title }}"
+          if [[ "$ISSUE_TITLE" =~ \[KAN-[0-9]+\] ]]; then
+            echo "::set-output name=kanban_issue::true"
+            echo "Issue title matches the pattern!"
+          else
+            echo "::set-output name=kanban_issue::false"
+            echo "Issue title does not match the pattern."
+          fi
+
+      - name: Run Actions (if KAN issue)
+        if: steps.check_title.outputs.kanban_issue == 'true'
+        run: |
+          echo "This action will only run for issues with [KAN-xx] in the title."
+          # Add your desired actions here.  For example:
+          # - echo "Assigning to project..."
+          # - gh project item-add --project "Your Project URL" --issue-number ${{ github.event.issue.number }}
+          #   env:
+          #     GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
