@@ -84,8 +84,8 @@
     <!-- Sidebar -->
     <div class="sidebar-fixed position-fixed">
 
-        <a class="logo-wrapper waves-effect">
-            <img src="https://mdbootstrap.com/img/logo/mdb-email.png" class="img-fluid" alt="">
+        <a class="logo-wrapper waves-effect" style="display: block; text-align: center;">
+            <h4 class="blue-text mb-0" style="font-weight: bold;">e-Kebele</h4>
         </a>
 
         <div class="list-group list-group-flush">
