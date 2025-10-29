@@ -8,6 +8,8 @@ jobs:
   check_issue_title:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3 
       - name: Check Issue Title
         id: check_title
         run: |
