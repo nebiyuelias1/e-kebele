@@ -1,0 +1,86 @@
+name: Rename Branch based on Jira Issue Key
+
+on:
+  pull_request:
+    types: [opened]
+
+jobs:
+  rename_branch:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+      contents: write  # Required for actions/checkout@v3
+      issues: read      # Required to get the issue title
+      repository-projects: read
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  # Required to get the base branch
+
+      - name: Get Associated Issue Number
+        id: get_issue_number
+        run: |
+          PR_NUMBER="${{ github.event.pull_request.number }}"
+          ISSUE_NUMBER=$(gh pr view "$PR_NUMBER" --json issueIds --jq '.[0]') # Get the first issue ID
+          echo "Issue Number: $ISSUE_NUMBER"
+          echo "::set-output name=issue_number::$ISSUE_NUMBER"
+        env:
+          GH_TOKEN: ${{ github.token }}
+
+      - name: Extract Jira Key from Issue Title
+        id: extract_jira_key
+        run: |
+          ISSUE_NUMBER="${{ steps.get_issue_number.outputs.issue_number }}"
+          if [[ -z "$ISSUE_NUMBER" ]]; then
+            echo "No associated issue found. Skipping rename."
+            exit 0
+          fi
+
+          ISSUE_TITLE=$(gh issue view "$ISSUE_NUMBER" --json title --jq .title)
+
+          # Extract Jira key (assuming it's at the beginning of the title)
+          JIRA_KEY=$(echo "$ISSUE_TITLE" | grep -oE '^[A-Z]+-[0-9]+')
+
+          if [[ -z "$JIRA_KEY" ]]; then
+            echo "::set-output name=new_branch_name::"  # No Jira key found, so don't rename
+            echo "No Jira key found in issue title. Skipping rename."
+            exit 0
+          fi
+
+          # Construct the new branch name (add a descriptive suffix)
+          NEW_BRANCH_NAME="${JIRA_KEY}-pr"  # Or use a more descriptive suffix
+
+          echo "::set-output name=jira_key::$JIRA_KEY"
+          echo "::set-output name=new_branch_name::$NEW_BRANCH_NAME"
+          echo "Jira Key: $JIRA_KEY"
+          echo "New Branch Name: $NEW_BRANCH_NAME"
+
+        env:
+          GH_TOKEN: ${{ github.token }}
+
+      - name: Rename Branch
+        if: steps.extract_jira_key.outputs.new_branch_name != ''
+        run: |
+          OLD_BRANCH_NAME="${{ github.head_ref }}"
+          NEW_BRANCH_NAME="${{ steps.extract_jira_key.outputs.new_branch_name }}"
+          REPO_NAME="${{ github.repository }}"
+
+          echo "Old Branch Name: $OLD_BRANCH_NAME"
+          echo "New Branch Name: $NEW_BRANCH_NAME"
+          echo "Repo Name: $REPO_NAME"
+
+          # Get the SHA of the current HEAD of the branch
+          SHA=$(git rev-parse --verify HEAD)
+
+          # Create the new branch
+          git branch "$NEW_BRANCH_NAME" "$SHA"
+
+          # Push the new branch
+          git push origin "$NEW_BRANCH_NAME"
+
+          # Delete the old branch
+          git push origin --delete "$OLD_BRANCH_NAME"
+
+          echo "Branch renamed from $OLD_BRANCH_NAME to $NEW_BRANCH_NAME"
