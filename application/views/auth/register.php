@@ -57,12 +57,12 @@
 
     <p>
       <label for="password">Password:</label>
-      <?php echo form_input($password, '', 'class="form-control mb-4" placeholder="Password"'); ?>
+      <?php echo form_password($password, '', 'class="form-control mb-4" placeholder="Password"'); ?>
     </p>
 
     <p>
       <label for="password_confirm">Confirm Password:</label>
-      <?php echo form_input($password_confirm, '', 'class="form-control mb-4" placeholder="Confirm Password"'); ?>
+      <?php echo form_password($password_confirm, '', 'class="form-control mb-4" placeholder="Confirm Password"'); ?>
     </p>
 
     <p><?php echo form_submit('submit', 'Register', 'class="btn btn-info btn-block my-4"'); ?></p>
@@ -81,8 +81,6 @@
     <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/bootstrap.min.js"></script>
     <!-- MDB core JavaScript -->
     <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/mdb.min.js"></script>
-    <!-- Your custom scripts (optional) -->
-    <script type="text/javascript"></script>
 
 </body>
 
