@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" width="200" height="60">
+  <!-- Background -->
+  <rect width="200" height="60" fill="#4285f4" rx="5"/>
+  
+  <!-- Text: e-Kebele -->
+  <text x="100" y="38" font-family="Arial, sans-serif" font-size="24" font-weight="bold" 
+        fill="white" text-anchor="middle">e-Kebele</text>
+</svg>
